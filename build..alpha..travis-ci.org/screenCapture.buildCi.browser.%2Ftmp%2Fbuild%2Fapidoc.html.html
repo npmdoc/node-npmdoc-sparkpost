@@ -1,0 +1,128 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/SparkPost/node-sparkpost">sparkpost (v2.1.2)</a>
+</h1>
+<h4>A Node.js wrapper for interfacing with your favorite SparkPost APIs</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.sparkpost">module sparkpost</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.sparkpost.sparkpost">
+            function <span class="apidocSignatureSpan"></span>sparkpost
+            <span class="apidocSignatureSpan">(apiKey, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.sparkpost" id="apidoc.module.sparkpost">module sparkpost</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.sparkpost.sparkpost" id="apidoc.element.sparkpost.sparkpost">
+        function <span class="apidocSignatureSpan"></span>sparkpost
+        <span class="apidocSignatureSpan">(apiKey, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">sparkpost = function (apiKey, options) {
+
+  options = handleOptions(apiKey, options);
+
+  this.apiKey = options.key || process.env.SPARKPOST_API_KEY;
+
+  if (typeof this.apiKey === 'undefined') {
+    throw new Error('Client requires an API Key.');
+  }
+
+  // adding version to object
+  this.version = version;
+
+  // setting up default headers
+  this.defaultHeaders = _.merge({
+    'User-Agent': createVersionStr(version, options)
+    , 'Content-Type': 'application/json'
+  }, options.headers);
+
+  //Optional client config
+  this.origin = options.origin;
+  this.apiVersion = options.apiVersion || defaults.apiVersion;
+  this.debug = (typeof options.debug === 'boolean') ? options.debug : defaults.debug;
+
+  this.inboundDomains = require('./inboundDomains')(this);
+  this.messageEvents = require('./messageEvents')(this);
+  this.recipientLists = require('./recipientLists')(this);
+  this.relayWebhooks = require('./relayWebhooks')(this);
+  this.sendingDomains = require('./sendingDomains')(this);
+  this.subaccounts = require('./subaccounts')(this);
+  this.suppressionList = require('./suppressionList')(this);
+  this.templates = require('./templates')(this);
+  this.transmissions = require('./transmissions')(this);
+  this.webhooks = require('./webhooks')(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
